@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <p>{{ this.$store.state.firstName }} {{ this.$store.state.lastName }}</p>
     <div v-for="airport in airports" :key="airport.abbreviation">
       <airport-card :airport="airport" />
     </div>
