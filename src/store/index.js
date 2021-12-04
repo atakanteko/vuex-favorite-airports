@@ -5,8 +5,8 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        firstName: 'John',
-        lastName: 'Doe'
+        firstName: 'Atakan',
+        lastName: 'Tekoğlu'
     },
     mutations: {
 
@@ -15,6 +15,8 @@ export const store = new Vuex.Store({
 
     },
     getters: {
-
+        fullName: (state) => {
+            return `${state.firstName} ${state.lastName}`
+        }
     }
 })
