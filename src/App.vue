@@ -1,7 +1,13 @@
 <template>
   <div class="wrapper">
-    <p>{{ $store.getters.fullName }}</p>
+    <p>{{ this.$store.getters.fullName }}</p>
     <div v-for="airport in airports" :key="airport.abbreviation">
+      <airport-card :airport="airport" @click.native="$store.dispatch('addToFavorites',airport)"/>
+    </div>
+    <br>
+    <h2 v-if="this.$store.state.favorites.length" class="fav-line">Favorites</h2>
+    <br>
+    <div v-for="(airport,index) in $store.state.favorites" :key="index">
       <airport-card :airport="airport" />
     </div>
   </div>
@@ -10,7 +16,7 @@
 <script>
 import allAirports from './data/airport.js'
 import AirportCard from './components/AirportCard.vue'
-
+import { mapActions } from 'vuex'
 export default {
   components: {
     'airport-card':AirportCard
@@ -19,7 +25,7 @@ export default {
     return {
       airports:allAirports
     }
-  }
+  },
 }
 </script>
 
@@ -41,8 +47,13 @@ export default {
   margin: 0 auto;
 }
 
+.fav-line::after {
+  
+}
+
 p,
 h3 {
   grid-column: span 3;
 }
+
 </style>
