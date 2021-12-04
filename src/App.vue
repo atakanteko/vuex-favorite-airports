@@ -2,7 +2,7 @@
   <div class="wrapper">
     <p>{{ this.$store.getters.fullName }}</p>
     <div v-for="airport in airports" :key="airport.abbreviation">
-      <airport-card :airport="airport" @click.native="$store.dispatch('addToFavorites',airport)"/>
+      <airport-card :airport="airport" @click.native="addToFavorites(airport)"/>
     </div>
     <br>
     <h2 v-if="this.$store.state.favorites.length" class="fav-line">Favorites</h2>
@@ -26,6 +26,11 @@ export default {
       airports:allAirports
     }
   },
+  methods:{
+    ...mapActions([
+      'addToFavorites'
+    ])
+  }
 }
 </script>
 
