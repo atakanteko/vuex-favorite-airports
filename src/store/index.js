@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
         favorites:[],
     },
     mutations: {
-        addToFavorites:(state,payload) => {
+        UPDATE_FAVORITES:(state,payload) => {
             state.favorites = payload
         }
     },
@@ -18,7 +18,7 @@ export const store = new Vuex.Store({
         addToFavorites(context,payload){
             const favorites = context.state.favorites
             favorites.push(payload)
-            context.commit('addToFavorites',favorites)
+            context.commit('UPDATE_FAVORITES',favorites)
         }
     },
     getters: {
